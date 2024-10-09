@@ -1,16 +1,16 @@
-import Link from "next/link";
-import { print } from "graphql/language/printer";
+import Link from 'next/link';
+import { print } from 'graphql/language/printer';
 
-import styles from "./Navigation.module.css";
+import styles from './Navigation.module.css';
 
-import { MenuItem, RootQueryToMenuItemConnection } from "@/gql/graphql";
-import { fetchGraphQL } from "@/utils/fetchGraphQL";
-import gql from "graphql-tag";
+import { MenuItem, RootQueryToMenuItemConnection } from '@/gql/graphql';
+import { fetchGraphQL } from '@/utils/fetchGraphQL';
+import gql from 'graphql-tag';
 
 async function getData() {
   const menuQuery = gql`
     query MenuQuery {
-      menuItems(where: { location: PRIMARY_MENU }) {
+      menuItems(where: { location: PRIMARY }) {
         nodes {
           uri
           target
@@ -25,7 +25,7 @@ async function getData() {
   }>(print(menuQuery));
 
   if (menuItems === null) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
 
   return menuItems;
@@ -35,22 +35,12 @@ export default async function Navigation() {
   const menuItems = await getData();
 
   return (
-    <nav
-      className={styles.navigation}
-      role="navigation"
-      itemScope
-      itemType="http://schema.org/SiteNavigationElement"
-    >
+    <nav className={styles.navigation} role="navigation" itemScope itemType="http://schema.org/SiteNavigationElement">
       {menuItems.nodes.map((item: MenuItem, index: number) => {
         if (!item.uri) return null;
 
         return (
-          <Link
-            itemProp="url"
-            href={item.uri}
-            key={index}
-            target={item.target || "_self"}
-          >
+          <Link itemProp="url" href={item.uri} key={index} target={item.target || '_self'}>
             <span itemProp="name">{item.label}</span>
           </Link>
         );
