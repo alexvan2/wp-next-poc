@@ -4,6 +4,7 @@ import { ColumnsFragment } from './Columns.graphql';
 import styles from './Columns.module.css';
 import { parseWordpressStyles } from '@/utils/parseWordpressStyles';
 import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
+import Column from '../Column/Column';
 
 type ColumnsProps = {
   data: ColumnsFragment;
@@ -26,10 +27,8 @@ export default function Columns({ data }: ColumnsProps) {
       )}
       style={parseWordpressStyles(style)}
     >
-      {columns.map((column, index) => (
-        <p key={index}>
-          {column.name} - {index}
-        </p>
+      {columns.map((column) => (
+        <Column key={column.clientId} data={column} />
       ))}
     </div>
   );

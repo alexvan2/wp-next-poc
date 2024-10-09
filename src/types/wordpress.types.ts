@@ -1,8 +1,10 @@
 export type WordpressStyle = {
   spacing?: {
-    blockGap?: {
-      top?: string;
-      left?: string;
-    };
+    blockGap?:
+      | string
+      | {
+          top?: string;
+          left?: string;
+        };
   };
 };

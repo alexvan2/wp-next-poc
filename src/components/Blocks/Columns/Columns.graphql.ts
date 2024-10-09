@@ -1,5 +1,6 @@
 import { VerticalAlignment } from '@/types/graphql.types';
 import gql from 'graphql-tag';
+import { ColumnFragment } from '../Column';
 
 export type ColumnsFragment = {
   clientId: string;
@@ -9,7 +10,7 @@ export type ColumnsFragment = {
     isStackedOnMobile: boolean;
     style: string | null;
   };
-  innerBlocks: { name: string }[];
+  innerBlocks: ColumnFragment[];
 };
 
 export const ColumnsFragment = gql(`
@@ -23,6 +24,9 @@ export const ColumnsFragment = gql(`
     }
     innerBlocks {
       name
+      ...on CoreColumn {
+        ...ColumnFragment
+      }
     }
   }
 `);

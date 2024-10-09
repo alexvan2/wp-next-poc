@@ -12,13 +12,15 @@ const BlockGapMap: Record<string, string> = {
 
 export function parseBlockGapStyles(style: WordpressStyle): CSSProperties {
   const styles: CSSProperties = {};
+  const blockGap = style.spacing?.blockGap;
 
-  if (style.spacing?.blockGap?.top) {
-    styles.rowGap = BlockGapMap[style.spacing.blockGap.top] ?? style.spacing.blockGap.top;
+  if (typeof blockGap === 'string') {
+    styles.gap = BlockGapMap[blockGap] ?? blockGap;
   }
 
-  if (style.spacing?.blockGap?.left) {
-    styles.columnGap = BlockGapMap[style.spacing.blockGap.left] ?? style.spacing.blockGap.left;
+  if (typeof blockGap === 'object') {
+    styles.rowGap = BlockGapMap[blockGap.top ?? ''] ?? blockGap.top;
+    styles.columnGap = BlockGapMap[blockGap.left ?? ''] ?? blockGap.left;
   }
 
   return styles;
