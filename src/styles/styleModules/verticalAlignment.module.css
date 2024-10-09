@@ -1,11 +1,11 @@
-.vertical-alignment__top {
+.top {
   align-items: flex-start;
 }
 
-.vertical-alignment__center {
+.center {
   align-items: center;
 }
 
-.vertical-alignment__bottom {
+.bottom {
   align-items: flex-end;
 }

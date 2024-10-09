@@ -1,11 +1,14 @@
 .left {
   text-align: left;
+  align-self: flex-start;
 }
 
 .center {
   text-align: center;
+  align-self: center;
 }
 
 .right {
   text-align: right;
+  align-self: flex-end;
 }

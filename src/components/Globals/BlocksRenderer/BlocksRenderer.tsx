@@ -1,7 +1,7 @@
-import Column, { ColumnFragment } from '@/components/Blocks/Column';
 import Columns, { ColumnsFragment } from '@/components/Blocks/Columns';
 import Heading, { HeadingFragment } from '@/components/Blocks/Heading';
 import Paragraph, { ParagraphFragment } from '@/components/Blocks/Paragraph';
+import Image, { ImageFragment } from '@/components/Blocks/Image';
 import { EditorBlock } from '@/gql/graphql';
 
 type BlocksRendererProps = {
@@ -21,8 +21,8 @@ export default function BlocksRenderer({ blocks }: BlocksRendererProps) {
             return <Heading key={block.clientId} data={block as unknown as HeadingFragment} />;
           case 'core/columns':
             return <Columns key={block.clientId} data={block as unknown as ColumnsFragment} />;
-          case 'core/column':
-            return <Column key={block.clientId} data={block as unknown as ColumnFragment} />;
+          case 'core/image':
+            return <Image key={block.clientId} data={block as unknown as ImageFragment} />;
           default:
             return null;
         }

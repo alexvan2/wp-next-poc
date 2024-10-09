@@ -29,6 +29,9 @@ export const ColumnFragment = gql(`
       ...on CoreHeading {
         ...HeadingFragment
       }
+      ... on CoreImage {
+        ...ImageFragment
+      }
     }
   }
 `);
