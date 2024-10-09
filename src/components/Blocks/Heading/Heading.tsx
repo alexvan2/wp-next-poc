@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { HeadingFragment } from './Heading.graphql';
 
 import classNames from 'classnames';
-import { getGlobalStyling } from '@/utils/getGlobalStyling';
+import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
 
 import styles from './Heading.module.css';
 
@@ -14,7 +14,7 @@ export default function Heading({ data }: HeadingProps) {
   const { fontSize, textAlign, level, content } = data.attributes;
 
   return createElement(`h${level}`, {
-    className: classNames(styles['heading'], getGlobalStyling({ fontSize, textAlign })),
+    className: classNames(styles['heading'], getGlobalClassnames({ fontSize, textAlign })),
     dangerouslySetInnerHTML: { __html: content },
   });
 }

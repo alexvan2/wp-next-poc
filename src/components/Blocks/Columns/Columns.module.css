@@ -1,0 +1,17 @@
+.columns {
+  display: flex;
+
+  &.columns__is-stacked {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .columns {
+    flex-direction: row;
+
+    &.columns__is-stacked {
+      flex-direction: row;
+    }
+  }
+}

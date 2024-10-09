@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ParagraphFragment } from './Paragraph.graphql';
-import { getGlobalStyling } from '@/utils/getGlobalStyling';
+import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
 
 type ParagraphProps = {
   data: ParagraphFragment;
@@ -11,7 +11,7 @@ export default function Paragraph({ data }: ParagraphProps) {
 
   return (
     <p
-      className={classNames(getGlobalStyling({ fontSize, textAlign }))}
+      className={classNames(getGlobalClassnames({ fontSize, textAlign }))}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );
