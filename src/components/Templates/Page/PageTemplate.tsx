@@ -3,9 +3,11 @@ import { ContentNode, Page } from '@/gql/graphql';
 import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { PageQuery } from './PageQuery';
 
+// Blocks
+import Paragraph, { ParagraphFragment } from '@/components/Blocks/Paragraph';
+import Heading, { HeadingFragment } from '@/components/Blocks/Heading';
+
 import styles from './PageTemplate.module.css';
-import Paragraph from '@/components/Blocks/Paragraph';
-import { ParagraphFragment } from '@/components/Blocks/Paragraph/Paragraph.graphql';
 
 interface TemplateProps {
   node: ContentNode;
@@ -24,6 +26,8 @@ export default async function PageTemplate({ node }: TemplateProps) {
         switch (block.name) {
           case 'core/paragraph':
             return <Paragraph key={block.clientId} data={block as unknown as ParagraphFragment} />;
+          case 'core/heading':
+            return <Heading key={block.clientId} data={block as unknown as HeadingFragment} />;
           default:
             return null;
         }

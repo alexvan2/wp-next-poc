@@ -1,12 +1,12 @@
-import { Align, FontSize } from '@/app/types/graphql.types';
+import { TextAlign, FontSize } from '@/types/graphql.types';
 import gql from 'graphql-tag';
 
 export type ParagraphFragment = {
   clientId: string;
-  name: string;
+  name: 'core/paragraph';
   attributes: {
     content: string;
-    align: Align | null;
+    align: TextAlign | null;
     fontSize: FontSize | null;
   };
 };

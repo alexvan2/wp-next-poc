@@ -1,21 +1,17 @@
-import styles from './Paragraph.module.css';
 import classNames from 'classnames';
 import { ParagraphFragment } from './Paragraph.graphql';
+import { getGlobalStyling } from '@/utils/getGlobalStyling';
 
 type ParagraphProps = {
   data: ParagraphFragment;
 };
 
 export default function Paragraph({ data }: ParagraphProps) {
-  const { content, align, fontSize } = data.attributes;
+  const { content, align: textAlign, fontSize } = data.attributes;
 
   return (
     <p
-      className={classNames(
-        styles['paragraph'],
-        styles[`paragraph__font-${fontSize ?? 'medium'}`],
-        styles[`paragraph__align-${align ?? 'left'}`]
-      )}
+      className={classNames(getGlobalStyling({ fontSize, textAlign }))}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );
