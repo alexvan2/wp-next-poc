@@ -10,12 +10,12 @@ body {
   overflow-x: hidden;
 }
 
-body {
+/* body {
   color: #fff;
   background: #000;
-}
+} */
 
 a {
-  color: #fff;
+  /* color: #fff; */
   text-decoration: underline;
 }

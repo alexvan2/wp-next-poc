@@ -1,0 +1,35 @@
+.paragraph {
+  /* Font size styles */
+  &.paragraph__font-small {
+    font-size: 0.9rem;
+  }
+
+  &.paragraph__font-medium {
+    font-size: 1.05rem;
+  }
+
+  &.paragraph__font-large {
+    font-size: 1.85rem;
+  }
+
+  &.paragraph__font-x-large {
+    font-size: 2.5rem;
+  }
+
+  &.paragraph__font-xx-large {
+    font-size: 3.27rem;
+  }
+
+  /* Text alignment styles */
+  &.paragraph__align-left {
+    text-align: left;
+  }
+
+  &.paragraph__align-center {
+    text-align: center;
+  }
+
+  &.paragraph__align-right {
+    text-align: right;
+  }
+}
