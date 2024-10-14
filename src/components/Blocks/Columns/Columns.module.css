@@ -1,5 +1,6 @@
 .columns {
   display: flex;
+  align-items: center;
 
   &.columns__is-stacked {
     flex-direction: column;

@@ -19,7 +19,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
   return (
     <>
       <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />
-      <div className={styles['raw-content-container']} dangerouslySetInnerHTML={{ __html: page?.content || '' }} />
+      {/* <div className={styles['raw-content-container']} dangerouslySetInnerHTML={{ __html: page?.content || '' }} /> */}
     </>
   );
 }

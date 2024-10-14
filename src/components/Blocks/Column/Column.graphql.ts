@@ -23,10 +23,10 @@ export const ColumnFragment = gql(`
       style
     }
     innerBlocks {
-      ...on CoreParagraph {
+      ... on CoreParagraph {
         ...ParagraphFragment
       }
-      ...on CoreHeading {
+      ... on CoreHeading {
         ...HeadingFragment
       }
       ... on CoreImage {
