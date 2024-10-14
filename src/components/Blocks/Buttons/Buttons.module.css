@@ -1,0 +1,29 @@
+.buttons {
+  display: flex;
+  width: 100%;
+
+  &.buttons__orientation-vertical {
+    flex-direction: column;
+  }
+
+  &.buttons__wrap {
+    flex-wrap: wrap;
+  }
+
+  /* Content justification */
+  &.buttons__justify-content-left {
+    justify-content: flex-start;
+  }
+
+  &.buttons__justify-content-center {
+    justify-content: center;
+  }
+
+  &.buttons__justify-content-right {
+    justify-content: flex-end;
+  }
+
+  &.buttons__justify-content-space-between {
+    justify-content: space-between;
+  }
+}

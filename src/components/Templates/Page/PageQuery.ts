@@ -1,3 +1,4 @@
+import { ButtonsFragment } from '@/components/Blocks/Buttons';
 import { ColumnFragment } from '@/components/Blocks/Column';
 import { ColumnsFragment } from '@/components/Blocks/Columns';
 import { HeadingFragment } from '@/components/Blocks/Heading';
@@ -11,6 +12,7 @@ export const PageQuery = gql`
   ${ColumnsFragment}
   ${ColumnFragment}
   ${ImageFragment}
+  ${ButtonsFragment}
 
   query PageQuery($id: ID!, $preview: Boolean = false) {
     page(id: $id, idType: DATABASE_ID, asPreview: $preview) {
@@ -27,6 +29,9 @@ export const PageQuery = gql`
         }
         ... on CoreImage {
           ...ImageFragment
+        }
+        ... on CoreButtons {
+          ...ButtonsFragment
         }
       }
     }

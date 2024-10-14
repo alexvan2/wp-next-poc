@@ -1,4 +1,4 @@
-import { EditorBlock } from '@/gql/graphql';
+import { ContentBlocks } from '@/types/blocks.types';
 import { VerticalAlignment } from '@/types/graphql.types';
 import gql from 'graphql-tag';
 
@@ -10,7 +10,7 @@ export type ColumnFragment = {
     width: string | null;
     style: string | null;
   };
-  innerBlocks: (EditorBlock | null)[];
+  innerBlocks: (ContentBlocks | null)[];
 };
 
 export const ColumnFragment = gql(`
@@ -31,6 +31,9 @@ export const ColumnFragment = gql(`
       }
       ... on CoreImage {
         ...ImageFragment
+      }
+      ... on CoreButtons {
+        ...ButtonsFragment
       }
     }
   }

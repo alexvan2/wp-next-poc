@@ -9,6 +9,7 @@ import { ContentBlocks } from '@/types/blocks.types';
 import classNames from 'classnames';
 
 import styles from './BlocksRenderer.module.css';
+import Buttons from '@/components/Blocks/Buttons';
 
 type BlocksRendererProps = {
   blocks: (ContentBlocks | null)[];
@@ -39,13 +40,22 @@ export default function BlocksRenderer({ blocks, isRoot = false }: BlocksRendere
             // eslint-disable-next-line jsx-a11y/alt-text
             block = <Image key={blockRef.clientId} data={blockRef} />;
             break;
+          case 'core/buttons':
+            block = <Buttons key={blockRef.clientId} data={blockRef} />;
+            sectionWidth = blockRef.attributes.align;
+            break;
           default:
             block = null;
             break;
         }
 
         return isRoot ? (
-          <section className={classNames(styles['root-section'], getGlobalClassnames({ sectionWidth }))}>
+          <section
+            className={classNames(
+              styles['root-section'],
+              getGlobalClassnames({ sectionWidth: sectionWidth ?? 'normal' })
+            )}
+          >
             {block}
           </section>
         ) : (
