@@ -15,10 +15,14 @@ export default function Image({ data }: ImageProps) {
     <div className={classNames(styles['image'], getGlobalClassnames({ textAlign }))}>
       {href ? (
         <a href={href} target={linkTarget || undefined} rel={rel || undefined}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={alt || undefined} />
         </a>
       ) : (
-        <img src={src} alt={alt || undefined} />
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt || undefined} />
+        </>
       )}
     </div>
   );

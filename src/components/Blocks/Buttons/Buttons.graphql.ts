@@ -1,5 +1,6 @@
 import { SectionWidth } from '@/types/graphql.types';
 import gql from 'graphql-tag';
+import { ButtonFragment } from '../Button/Button.graphql';
 
 export type ButtonsFragment = {
   clientId: string;
@@ -7,21 +8,24 @@ export type ButtonsFragment = {
   attributes: {
     align: SectionWidth | null;
     layout: string | null; // This will be parsed to ButtonsLayout
+    style: string | null;
   };
-  innerBlocks: { clientId: string; name: 'core/button' }[]; // Replace by ButtonFragment when available
+  innerBlocks: ButtonFragment[];
 };
 
-export const ButtonsFragment = gql(`
+export const ButtonsFragment = gql`
   fragment ButtonsFragment on CoreButtons {
     clientId
     name
     attributes {
       align
       layout
+      style
     }
     innerBlocks {
-      clientId
-      name
+      ... on CoreButton {
+        ...ButtonFragment
+      }
     }
   }
-`);
+`;

@@ -1,3 +1,4 @@
+import { ButtonFragment } from '@/components/Blocks/Button/Button.graphql';
 import { ButtonsFragment } from '@/components/Blocks/Buttons';
 import { ColumnFragment } from '@/components/Blocks/Column';
 import { ColumnsFragment } from '@/components/Blocks/Columns';
@@ -13,6 +14,7 @@ export const PageQuery = gql`
   ${ColumnFragment}
   ${ImageFragment}
   ${ButtonsFragment}
+  ${ButtonFragment}
 
   query PageQuery($id: ID!, $preview: Boolean = false) {
     page(id: $id, idType: DATABASE_ID, asPreview: $preview) {

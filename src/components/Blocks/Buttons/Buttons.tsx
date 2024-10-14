@@ -4,6 +4,8 @@ import { ButtonsLayout } from './Buttons.type';
 import styles from './Buttons.module.css';
 import classNames from 'classnames';
 import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
+import Button from '../Button/Button';
+import { parseWordpressStyles } from '@/utils/parseWordpressStyles';
 
 type ButtonsProps = {
   data: ButtonsFragment;
@@ -11,7 +13,7 @@ type ButtonsProps = {
 
 export default function Buttons({ data }: ButtonsProps) {
   const {
-    attributes: { layout },
+    attributes: { layout, style },
     innerBlocks,
   } = data;
 
@@ -28,13 +30,10 @@ export default function Buttons({ data }: ButtonsProps) {
         },
         getGlobalClassnames({ verticalAlignment: parsedLayout?.verticalAlignment })
       )}
+      style={parseWordpressStyles(style)}
     >
       {innerBlocks.map((button) => {
-        return (
-          <button key={button.clientId} className="button">
-            {button.name} - {button.clientId}
-          </button>
-        );
+        return <Button key={button.clientId} data={button} />;
       })}
     </div>
   );

@@ -1,0 +1,33 @@
+.button {
+  text-decoration: none;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 0.33rem;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  color: white;
+  cursor: pointer;
+
+  &.button__outline {
+    background-color: transparent;
+    color: black;
+  }
+
+  /* Button widths */
+  &.button__width-25 {
+    width: 25%;
+  }
+
+  &.button__width-50 {
+    width: 50%;
+  }
+
+  &.button__width-75 {
+    width: 75%;
+  }
+
+  &.button__width-100 {
+    width: 100%;
+  }
+}
