@@ -1,31 +1,56 @@
-import Columns, { ColumnsFragment } from '@/components/Blocks/Columns';
-import Heading, { HeadingFragment } from '@/components/Blocks/Heading';
-import Paragraph, { ParagraphFragment } from '@/components/Blocks/Paragraph';
-import Image, { ImageFragment } from '@/components/Blocks/Image';
-import { EditorBlock } from '@/gql/graphql';
+import Columns from '@/components/Blocks/Columns';
+import Heading from '@/components/Blocks/Heading';
+import Paragraph from '@/components/Blocks/Paragraph';
+import Image from '@/components/Blocks/Image';
+import { ReactNode } from 'react';
+import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
+import { SectionWidth } from '@/types/graphql.types';
+import { ContentBlocks } from '@/types/blocks.types';
+import classNames from 'classnames';
+
+import styles from './BlocksRenderer.module.css';
 
 type BlocksRendererProps = {
-  blocks: (EditorBlock | null)[];
+  blocks: (ContentBlocks | null)[];
+  isRoot?: boolean;
 };
 
-export default function BlocksRenderer({ blocks }: BlocksRendererProps) {
+export default function BlocksRenderer({ blocks, isRoot = false }: BlocksRendererProps) {
   return (
     <>
-      {blocks.map((block) => {
-        if (!block) return null;
+      {blocks.map((blockRef) => {
+        if (!blockRef) return null;
 
-        switch (block.name) {
+        let block: ReactNode;
+        let sectionWidth: SectionWidth | null = 'normal';
+        switch (blockRef.name) {
           case 'core/paragraph':
-            return <Paragraph key={block.clientId} data={block as unknown as ParagraphFragment} />;
+            block = <Paragraph key={blockRef.clientId} data={blockRef} />;
+            break;
           case 'core/heading':
-            return <Heading key={block.clientId} data={block as unknown as HeadingFragment} />;
+            block = <Heading key={blockRef.clientId} data={blockRef} />;
+            sectionWidth = blockRef.attributes.align;
+            break;
           case 'core/columns':
-            return <Columns key={block.clientId} data={block as unknown as ColumnsFragment} />;
+            block = <Columns key={blockRef.clientId} data={blockRef} />;
+            sectionWidth = blockRef.attributes.align;
+            break;
           case 'core/image':
-            return <Image key={block.clientId} data={block as unknown as ImageFragment} />;
+            // eslint-disable-next-line jsx-a11y/alt-text
+            block = <Image key={blockRef.clientId} data={blockRef} />;
+            break;
           default:
-            return null;
+            block = null;
+            break;
         }
+
+        return isRoot ? (
+          <section className={classNames(styles['root-section'], getGlobalClassnames({ sectionWidth }))}>
+            {block}
+          </section>
+        ) : (
+          block
+        );
       })}
     </>
   );

@@ -5,6 +5,7 @@ import { PageQuery } from './PageQuery';
 
 import styles from './PageTemplate.module.css';
 import BlocksRenderer from '@/components/Globals/BlocksRenderer/BlocksRenderer';
+import { ContentBlocks } from '@/types/blocks.types';
 
 interface TemplateProps {
   node: ContentNode;
@@ -17,7 +18,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
 
   return (
     <>
-      <BlocksRenderer blocks={page?.editorBlocks || []} />
+      <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />
       <div className={styles['raw-content-container']} dangerouslySetInnerHTML={{ __html: page?.content || '' }} />
     </>
   );

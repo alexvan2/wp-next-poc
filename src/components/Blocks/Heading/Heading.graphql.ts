@@ -1,10 +1,11 @@
-import { TextAlign, FontSize } from '@/types/graphql.types';
+import { TextAlign, FontSize, SectionWidth } from '@/types/graphql.types';
 import gql from 'graphql-tag';
 
 export type HeadingFragment = {
   clientId: string;
   name: 'core/heading';
   attributes: {
+    align: SectionWidth | null;
     fontSize: FontSize | null;
     textAlign: TextAlign | null;
     level: number;
@@ -17,6 +18,7 @@ export const HeadingFragment = gql`
     clientId
     name
     attributes {
+      align
       fontSize
       textAlign
       level
