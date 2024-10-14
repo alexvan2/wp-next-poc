@@ -3,13 +3,14 @@ import { ButtonFragment } from './Button.graphql';
 
 import styles from './Button.module.css';
 import { getGlobalClassnames } from '@/utils/getGlobalClassnames';
+import { parseWordpressStyles } from '@/utils/parseWordpressStyles';
 
 type ButtonProps = {
   data: ButtonFragment;
 };
 
 export default function Button({ data }: ButtonProps) {
-  const { anchor, url, linkTarget, rel, text, fontSize, textAlign, className, buttonWidth } = data.attributes;
+  const { anchor, url, linkTarget, rel, text, fontSize, textAlign, className, style, buttonWidth } = data.attributes;
 
   return (
     <a
@@ -20,6 +21,7 @@ export default function Button({ data }: ButtonProps) {
       href={anchor || url || '#'}
       target={linkTarget || undefined}
       rel={rel || undefined}
+      style={parseWordpressStyles(style)}
     >
       <span className={getGlobalClassnames({ fontSize, textAlign })} dangerouslySetInnerHTML={{ __html: text || '' }} />
     </a>
