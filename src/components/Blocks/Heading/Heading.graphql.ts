@@ -10,6 +10,7 @@ export type HeadingFragment = {
     textAlign: TextAlign | null;
     level: number;
     content: string;
+    style: string | null;
   };
 };
 
@@ -23,6 +24,7 @@ export const HeadingFragment = gql`
       textAlign
       level
       content
+      style
     }
   }
 `;
