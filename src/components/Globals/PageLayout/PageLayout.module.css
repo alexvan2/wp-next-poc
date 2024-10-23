@@ -1,0 +1,18 @@
+.page-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & .page-layout--header {
+    width: 100%;
+  }
+
+  & .page-layout--content {
+    flex: 1;
+  }
+
+  & .page-layout--footer {
+    width: 100%;
+  }
+}

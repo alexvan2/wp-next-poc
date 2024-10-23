@@ -4,6 +4,7 @@ import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { PageQuery } from './PageQuery';
 import BlocksRenderer from '@/components/Globals/BlocksRenderer/BlocksRenderer';
 import { ContentBlocks } from '@/types/blocks.types';
+import PageLayout from '@/components/Globals/PageLayout';
 
 interface TemplateProps {
   node: ContentNode;
@@ -14,5 +15,9 @@ export default async function PageTemplate({ node }: TemplateProps) {
     id: node.databaseId,
   });
 
-  return <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />;
+  return (
+    <PageLayout>
+      <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />
+    </PageLayout>
+  );
 }

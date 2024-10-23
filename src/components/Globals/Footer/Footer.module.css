@@ -1,0 +1,27 @@
+.footer {
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background-color: #fdf7ed;
+
+  .logo {
+    display: block;
+    width: auto;
+    height: 24px;
+  }
+
+  .language-selector {
+    border: 1px solid black;
+    border-radius: 1000px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
