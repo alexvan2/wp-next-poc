@@ -1,0 +1,29 @@
+.tabs {
+  margin: auto;
+  width: 100%;
+  max-width: 1280px;
+}
+
+.tabs--header {
+  display: flex;
+  list-style: none;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tabs--header-item {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  text-wrap: nowrap;
+
+  &.tabs--header-item__active {
+    font-weight: 600;
+  }
+}
+
+.tabs--content {
+  flex: 1;
+}

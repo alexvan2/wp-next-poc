@@ -2,8 +2,6 @@ import { print } from 'graphql/language/printer';
 import { ContentNode, Page } from '@/gql/graphql';
 import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { PageQuery } from './PageQuery';
-
-import styles from './PageTemplate.module.css';
 import BlocksRenderer from '@/components/Globals/BlocksRenderer/BlocksRenderer';
 import { ContentBlocks } from '@/types/blocks.types';
 
@@ -16,10 +14,5 @@ export default async function PageTemplate({ node }: TemplateProps) {
     id: node.databaseId,
   });
 
-  return (
-    <>
-      <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />
-      {/* <div className={styles['raw-content-container']} dangerouslySetInnerHTML={{ __html: page?.content || '' }} /> */}
-    </>
-  );
+  return <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />;
 }

@@ -10,6 +10,7 @@ import classNames from 'classnames';
 
 import styles from './BlocksRenderer.module.css';
 import Buttons from '@/components/Blocks/Buttons';
+import Tabs from '@/components/Blocks/Tabs';
 
 type BlocksRendererProps = {
   blocks: (ContentBlocks | null)[];
@@ -43,6 +44,10 @@ export default function BlocksRenderer({ blocks, isRoot = false }: BlocksRendere
           case 'core/buttons':
             block = <Buttons key={blockRef.clientId} data={blockRef} />;
             sectionWidth = blockRef.attributes.align;
+            break;
+          case 'doodle/tabs-block':
+            block = <Tabs key={blockRef.clientId} data={blockRef} />;
+            sectionWidth = 'wide';
             break;
           default:
             block = null;
