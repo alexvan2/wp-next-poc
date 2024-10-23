@@ -8,6 +8,7 @@ import { HeadingFragment } from '@/components/Blocks/Heading';
 import { ImageFragment } from '@/components/Blocks/Image';
 import { ParagraphFragment } from '@/components/Blocks/Paragraph';
 import { TabsFragment } from '@/components/Blocks/Tabs';
+import { TabFragment } from '@/components/Blocks/Tab';
 
 export const PageQuery = gql`
   ${ParagraphFragment}
@@ -18,6 +19,7 @@ export const PageQuery = gql`
   ${ButtonsFragment}
   ${ButtonFragment}
   ${TabsFragment}
+  ${TabFragment}
 
   query PageQuery($id: ID!, $preview: Boolean = false) {
     page(id: $id, idType: DATABASE_ID, asPreview: $preview) {

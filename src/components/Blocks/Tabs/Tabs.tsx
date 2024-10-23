@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import styles from './Tabs.module.css';
 import classNames from 'classnames';
 import { TabsFragment } from './Tabs.graphql';
+import Tab from '../Tab';
 
 type Tab = {
   title: string;
@@ -41,7 +42,7 @@ export default function Tabs({ data }: TabsProps) {
         ))}
       </ul>
       <div className={styles['tabs--content']} style={{ backgroundColor: tabs[activeTab].backgroundColor }}>
-        {tabsContent[activeTab].name} - {tabsContent[activeTab].clientId}
+        <Tab data={tabsContent[activeTab]} />
       </div>
     </div>
   );

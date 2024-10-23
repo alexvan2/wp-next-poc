@@ -1,5 +1,5 @@
-import { EditorBlock } from '@/gql/graphql';
 import gql from 'graphql-tag';
+import { TabFragment } from '../Tab/Tab.graphql';
 
 export type TabsFragment = {
   clientId: string;
@@ -7,7 +7,7 @@ export type TabsFragment = {
   attributes: {
     tabs: string; // This will be parsed to Tab[]
   };
-  innerBlocks: EditorBlock[]; // @todo: Replace with TabFragment
+  innerBlocks: TabFragment[]; // @todo: Replace with TabFragment
 };
 
 export const TabsFragment = gql`
@@ -18,8 +18,9 @@ export const TabsFragment = gql`
       tabs
     }
     innerBlocks {
-      clientId
-      name
+      ... on DoodleTabBlock {
+        ...TabFragment
+      }
     }
   }
 `;
