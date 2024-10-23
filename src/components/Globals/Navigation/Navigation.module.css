@@ -1,5 +1,14 @@
 .navigation {
-  padding: 20px;
   display: flex;
   gap: 20px;
+
+  & a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+
+    &:hover {
+      color: #024cbc;
+    }
+  }
 }

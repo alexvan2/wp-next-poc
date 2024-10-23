@@ -4,6 +4,8 @@ import styles from './Header.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button, { ButtonFragment } from '@/components/Blocks/Button';
+import Navigation from '../Navigation';
+import { MenuLocationEnum } from '@/gql/graphql';
 
 export default function Header() {
   const loginButton: ButtonFragment = {
@@ -45,7 +47,9 @@ export default function Header() {
       <Link href="/homepage-en">
         <Image className={styles['logo']} src={logo} alt="Doodle logo" />
       </Link>
-      <div className={styles['navigation']}>Navigation</div>
+      <div className={styles['navigation']}>
+        <Navigation location={MenuLocationEnum.Primary} />
+      </div>
       <div className={styles['actions']}>
         <Button data={loginButton} />
         <Button data={createButton} />
