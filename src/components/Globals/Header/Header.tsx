@@ -48,7 +48,7 @@ export default function Header() {
         <Image className={styles['logo']} src={logo} alt="Doodle logo" />
       </Link>
       <div className={styles['navigation']}>
-        <Navigation location={MenuLocationEnum.Primary} />
+        <Navigation location={MenuLocationEnum.Header} />
       </div>
       <div className={styles['actions']}>
         <Button data={loginButton} />
