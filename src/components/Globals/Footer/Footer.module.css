@@ -11,17 +11,4 @@
     width: auto;
     height: 24px;
   }
-
-  .language-selector {
-    border: 1px solid black;
-    border-radius: 1000px;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-  }
 }

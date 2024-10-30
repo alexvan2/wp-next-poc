@@ -1,0 +1,51 @@
+.language-selector {
+  position: relative;
+}
+
+.language-selector--label {
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 70px;
+  height: 30px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover,
+  &.language-selector--label__active {
+    background-color: black;
+    color: white;
+  }
+}
+
+.language-selector--links {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: none;
+  overflow: hidden;
+
+  &.language-selector--links__active {
+    display: block;
+  }
+}
+
+.language-selector--link {
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: block;
+  padding: 4px 12px;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}

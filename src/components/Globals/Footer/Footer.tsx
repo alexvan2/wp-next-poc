@@ -5,8 +5,13 @@ import Link from 'next/link';
 import styles from './Footer.module.css';
 import Navigation from '../Navigation';
 import { MenuLocationEnum } from '@/gql/graphql';
+import LanguageSelector, { AlternateLocale } from '../LanguageSelector';
 
-export default function Footer() {
+type FooterProps = {
+  alternateLocales?: AlternateLocale[];
+};
+
+export default function Footer({ alternateLocales }: FooterProps) {
   return (
     <footer className={styles['footer']}>
       <Link href="/homepage-en">
@@ -15,7 +20,7 @@ export default function Footer() {
       <div className={styles['navigation']}>
         <Navigation location={MenuLocationEnum.Footer} />
       </div>
-      <div className={styles['language-selector']}>🇬🇧 EN</div>
+      <LanguageSelector alternateLocales={alternateLocales} />
     </footer>
   );
 }

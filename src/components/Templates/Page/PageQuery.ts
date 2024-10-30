@@ -44,6 +44,10 @@ export const PageQuery = gql`
         }
       }
       content
+      translations {
+        slug
+        languageCode
+      }
     }
   }
 `;

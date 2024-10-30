@@ -5,6 +5,7 @@ import { PageQuery } from './PageQuery';
 import BlocksRenderer from '@/components/Globals/BlocksRenderer/BlocksRenderer';
 import { ContentBlocks } from '@/types/blocks.types';
 import PageLayout from '@/components/Globals/PageLayout';
+import { wpLocaleToNextLocale } from '@/utils/wpLocaleToNextLocale';
 
 interface TemplateProps {
   node: ContentNode;
@@ -15,8 +16,13 @@ export default async function PageTemplate({ node }: TemplateProps) {
     id: node.databaseId,
   });
 
+  const alternateLocales = page.translations?.map((translation) => ({
+    locale: wpLocaleToNextLocale(translation?.languageCode ?? ''),
+    slug: translation?.slug ?? '',
+  }));
+
   return (
-    <PageLayout>
+    <PageLayout alternateLocales={alternateLocales}>
       <BlocksRenderer blocks={(page?.editorBlocks as unknown as ContentBlocks[]) || []} isRoot />
     </PageLayout>
   );
