@@ -43,6 +43,7 @@ export const PageQuery = gql`
           ...TabsFragment
         }
       }
+      content
     }
   }
 `;
