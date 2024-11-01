@@ -8,8 +8,17 @@ import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { NavigationQuery } from './Navigation.graphql';
 import { MenuItem } from '@/types/navigation.types';
 
-async function getData(location: MenuLocationEnum) {
-  const { menuItems } = await fetchGraphQL<NavigationQuery>(print(NavigationQuery), { location });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function getData(location: MenuLocationEnum, locale: string) {
+  /**
+   * @todo - implement locale so menus can be fetched in the correct language
+   *
+   * The value for locale can be extracted from the url. Ideally we shouldn't use
+   * the `useParams` hook for that, so this component can be server-side rendered.
+   *
+   * The locale can be passed as props from the app/[locale]/[[...slug]]/page.tsx file.
+   */
+  const { menuItems } = await fetchGraphQL<NavigationQuery>(print(NavigationQuery), { location, language: 'en' });
 
   if (menuItems === null) {
     throw new Error('Failed to fetch data');
@@ -20,10 +29,11 @@ async function getData(location: MenuLocationEnum) {
 
 type NavigationProps = {
   location: MenuLocationEnum;
+  locale: string;
 };
 
-export default async function Navigation({ location }: NavigationProps) {
-  const menuItems = await getData(location);
+export default async function Navigation({ location, locale }: NavigationProps) {
+  const menuItems = await getData(location, locale);
 
   return (
     <nav

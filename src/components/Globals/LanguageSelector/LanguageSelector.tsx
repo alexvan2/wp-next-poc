@@ -21,7 +21,7 @@ function getLabel(locale: string) {
       return '🇬🇧 EN';
     case 'de':
       return '🇩🇪 DE';
-    case 'pt_BR':
+    case 'pt-br':
       return '🇧🇷 PT';
     default:
       return '🇬🇧 EN';

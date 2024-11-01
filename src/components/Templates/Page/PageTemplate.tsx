@@ -5,7 +5,6 @@ import { PageQuery } from './PageQuery';
 import BlocksRenderer from '@/components/Globals/BlocksRenderer/BlocksRenderer';
 import { ContentBlocks } from '@/types/blocks.types';
 import PageLayout from '@/components/Globals/PageLayout';
-import { wpLocaleToNextLocale } from '@/utils/wpLocaleToNextLocale';
 
 interface TemplateProps {
   node: ContentNode;
@@ -17,7 +16,7 @@ export default async function PageTemplate({ node }: TemplateProps) {
   });
 
   const alternateLocales = page.translations?.map((translation) => ({
-    locale: wpLocaleToNextLocale(translation?.languageCode ?? ''),
+    locale: translation?.languageCode ?? '',
     slug: translation?.slug ?? '',
   }));
 

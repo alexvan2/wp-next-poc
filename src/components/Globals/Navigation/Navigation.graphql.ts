@@ -15,8 +15,8 @@ export type NavigationQueryVariables = {
 };
 
 export const NavigationQuery = gql`
-  query MenuQuery($location: MenuLocationEnum) {
-    menuItems(where: { location: $location }) {
+  query MenuQuery($location: MenuLocationEnum, $language: String!) {
+    menuItems(where: { location: $location, language: $language }) {
       nodes {
         uri
         target
