@@ -34,7 +34,7 @@ export async function GET(request: Request) {
 `;
 
   const { login } = await fetchGraphQL<{ login: LoginPayload }>(
-    print(mutation),
+    print(mutation)
   );
 
   const authToken = login.authToken;
@@ -56,7 +56,7 @@ export async function GET(request: Request) {
     {
       id,
     },
-    { Authorization: `Bearer ${authToken}` },
+    { Authorization: `Bearer ${authToken}` }
   );
 
   if (!contentNode) {
@@ -64,11 +64,11 @@ export async function GET(request: Request) {
   }
 
   const response = NextResponse.redirect(
-    `${process.env.NEXT_PUBLIC_BASE_URL}${
+    `${process.env.VERCEL_URL}${
       contentNode.status === "draft"
         ? `/preview/${contentNode.databaseId}`
         : contentNode.uri
-    }`,
+    }`
   );
 
   response.headers.set("Set-Cookie", `wp_jwt=${authToken}; path=/;`);

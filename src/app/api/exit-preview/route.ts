@@ -7,12 +7,10 @@ export async function GET(request: Request) {
 
   draftMode().disable();
 
-  const response = NextResponse.redirect(
-    `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
-  );
+  const response = NextResponse.redirect(`${process.env.VERCEL_URL}${path}`);
   response.headers.set(
     "Set-Cookie",
-    `wp_jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`,
+    `wp_jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`
   );
 
   return response;

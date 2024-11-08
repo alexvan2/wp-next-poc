@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     ...metadata,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/404-not-found/`,
+      canonical: `${process.env.VERCEL_URL}/404-not-found/`,
     },
   } as Metadata;
 }
