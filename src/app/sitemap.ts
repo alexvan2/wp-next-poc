@@ -1,4 +1,4 @@
-import getBaseUrl from "@/utils/getBaseUrl";
+import { baseUrl } from "@/utils/constants";
 import { MetadataRoute } from "next";
 
 export const revalidate = 0;
@@ -40,7 +40,7 @@ async function getPostsUrls({
 
   const posts = data.map((post: any) => {
     return {
-      url: `${getBaseUrl}${post.url}`,
+      url: `${baseUrl}${post.url}`,
       lastModified: new Date(post.post_modified_date)
         .toISOString()
         .split("T")[0],

@@ -1,11 +1,11 @@
 import { Page } from "@/gql/graphql";
-import getBaseUrl from "./getBaseUrl";
+import { baseUrl } from "./constants";
 
 export const setSeoData = ({ seo }: { seo: Page["seo"] }) => {
   if (!seo) return {};
 
   return {
-    metadataBase: new URL(`${getBaseUrl()}`),
+    metadataBase: new URL(`${baseUrl}`),
     title: seo.title || "",
     description: seo.metaDesc || "",
     robots: {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import getBaseUrl from "./utils/getBaseUrl";
+import { baseUrl } from "./utils/constants";
 
 export async function middleware(request: NextRequest) {
   if (!process.env.WP_USER || !process.env.WP_APP_PASS) {
@@ -35,7 +35,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-    const newUrl = new URL(redirect.action_data.url, getBaseUrl()).toString();
+    const newUrl = new URL(redirect.action_data.url, baseUrl).toString();
 
     return NextResponse.redirect(newUrl, {
       status: redirect.action_code === 301 ? 308 : 307,

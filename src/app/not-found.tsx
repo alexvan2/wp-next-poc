@@ -7,7 +7,7 @@ import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { ContentNode, Page } from "@/gql/graphql";
 import { PageQuery } from "@/components/Templates/Page/PageQuery";
 import { SeoQuery } from "@/queries/general/SeoQuery";
-import getBaseUrl from "@/utils/getBaseUrl";
+import { baseUrl } from "@/utils/constants";
 
 const notFoundPageWordPressId = 12;
 
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     ...metadata,
     alternates: {
-      canonical: `${getBaseUrl}/404-not-found/`,
+      canonical: `${baseUrl}/404-not-found/`,
     },
   } as Metadata;
 }

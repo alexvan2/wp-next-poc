@@ -5,7 +5,7 @@ import { fetchGraphQL } from "@/utils/fetchGraphQL";
 import { draftMode } from "next/headers";
 import { NextResponse } from "next/server";
 import gql from "graphql-tag";
-import getBaseUrl from "@/utils/getBaseUrl";
+import { baseUrl } from "@/utils/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +65,7 @@ export async function GET(request: Request) {
   }
 
   const response = NextResponse.redirect(
-    `${getBaseUrl()}${
+    `${baseUrl}${
       contentNode.status === "draft"
         ? `/preview/${contentNode.databaseId}`
         : contentNode.uri
