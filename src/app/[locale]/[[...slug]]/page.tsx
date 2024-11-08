@@ -15,6 +15,7 @@ import { nextSlugToWpSlug } from "@/utils/nextSlugToWpSlug";
 import PostTemplate from "@/components/Templates/Post/PostTemplate";
 import { SeoQuery } from "@/queries/general/SeoQuery";
 import { nextLocaleToWpLocale } from "@/utils/nextLocaleToWpLocale";
+import getBaseUrl from "@/utils/getBaseUrl";
 
 type Props = {
   params: { slug: string | string[]; locale: string };
@@ -68,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     ...metadata,
     alternates: {
-      canonical: `${process.env.VERCEL_URL}${slug}`,
+      canonical: `${getBaseUrl}${slug}`,
     },
   } as Metadata;
 }

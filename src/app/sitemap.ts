@@ -1,3 +1,4 @@
+import getBaseUrl from "@/utils/getBaseUrl";
 import { MetadataRoute } from "next";
 
 export const revalidate = 0;
@@ -39,7 +40,7 @@ async function getPostsUrls({
 
   const posts = data.map((post: any) => {
     return {
-      url: `${process.env.VERCEL_URL}${post.url}`,
+      url: `${getBaseUrl}${post.url}`,
       lastModified: new Date(post.post_modified_date)
         .toISOString()
         .split("T")[0],

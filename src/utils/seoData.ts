@@ -1,10 +1,11 @@
 import { Page } from "@/gql/graphql";
+import getBaseUrl from "./getBaseUrl";
 
 export const setSeoData = ({ seo }: { seo: Page["seo"] }) => {
   if (!seo) return {};
 
   return {
-    metadataBase: new URL(`${process.env.VERCEL_URL}`),
+    metadataBase: new URL(`${getBaseUrl()}`),
     title: seo.title || "",
     description: seo.metaDesc || "",
     robots: {

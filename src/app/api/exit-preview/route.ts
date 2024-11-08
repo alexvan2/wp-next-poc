@@ -1,3 +1,4 @@
+import getBaseUrl from "@/utils/getBaseUrl";
 import { draftMode } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -7,7 +8,7 @@ export async function GET(request: Request) {
 
   draftMode().disable();
 
-  const response = NextResponse.redirect(`${process.env.VERCEL_URL}${path}`);
+  const response = NextResponse.redirect(`${getBaseUrl()}${path}`);
   response.headers.set(
     "Set-Cookie",
     `wp_jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`
