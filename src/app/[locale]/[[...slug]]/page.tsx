@@ -41,6 +41,7 @@ async function getPageDatabaseId({ params }: Props): Promise<number | null> {
   }>(print(ContentFindQuery), {
     language: locale,
   });
+  console.log("GraphQL query executed: ", print(ContentFindQuery));
   console.log("Found content nodes for locale ", locale, ": ", contentNodes);
   const page = contentNodes.nodes.find((node) => node.slug === slug);
 
