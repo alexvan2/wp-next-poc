@@ -24,13 +24,13 @@ export async function fetchGraphQL<T = any>(
       },
     });
 
-    console.log("GraphQL query: ", body);
+    /*console.log("GraphQL query: ", body);
     if (authHeader) {
       console.log(authHeader);
     }
     if (headers) {
       console.log(headers);
-    }
+    }*/
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/graphql`,
@@ -42,10 +42,7 @@ export async function fetchGraphQL<T = any>(
           ...headers,
         },
         body,
-        cache: "no-cache",
-        next: {
-          tags: ["wordpress"],
-        },
+        cache: "no-store",
       }
     );
 
