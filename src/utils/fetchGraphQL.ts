@@ -25,8 +25,12 @@ export async function fetchGraphQL<T = any>(
     });
 
     console.log("GraphQL query: ", body);
-    console.log(authHeader);
-    console.log(headers);
+    if (authHeader) {
+      console.log(authHeader);
+    }
+    if (headers) {
+      console.log(headers);
+    }
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/graphql`,
