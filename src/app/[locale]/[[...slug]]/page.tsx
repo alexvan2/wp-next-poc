@@ -34,11 +34,14 @@ async function getPageDatabaseId({ params }: Props): Promise<number | null> {
     return parseInt(slug.split("preview/")[1]);
   }
 
+  console.log("Fetching page database id", slug, locale);
+
   const { contentNodes } = await fetchGraphQL<{
     contentNodes: { nodes: ContentNode[] };
   }>(print(ContentFindQuery), {
     language: locale,
   });
+  console.log("Found content nodes for locale ", locale, ": ", contentNodes);
   const page = contentNodes.nodes.find((node) => node.slug === slug);
 
   return page ? page.databaseId : null;
