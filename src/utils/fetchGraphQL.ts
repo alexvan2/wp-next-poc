@@ -42,7 +42,7 @@ export async function fetchGraphQL<T = any>(
           ...headers,
         },
         body,
-        cache: "no-store",
+        cache: "no-cache",
       }
     );
 
