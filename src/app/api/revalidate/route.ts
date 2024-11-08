@@ -33,10 +33,10 @@ export async function PUT(request: NextRequest) {
       paths,
       tags: tags,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Error revalidating paths or tags" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
