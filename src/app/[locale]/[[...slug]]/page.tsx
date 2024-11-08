@@ -82,6 +82,7 @@ export default async function Page({ params }: Props) {
   const pageId: number | null = await getPageDatabaseId({ params });
 
   if (!pageId) {
+    console.log("Page not found with params", params);
     return notFound();
   }
 
@@ -94,6 +95,7 @@ export default async function Page({ params }: Props) {
   );
 
   if (!contentNode) {
+    console.log("Content node not found with slug", pageId);
     return notFound();
   }
 
