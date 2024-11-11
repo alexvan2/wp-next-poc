@@ -3,8 +3,8 @@ import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function PUT(request: NextRequest) {
   const requestBody = await request.text();
-  const requestBodyObject = JSON.parse(requestBody);
-  const { paths, post } = requestBodyObject ?? { paths: [], post: {} };
+  const requestBodyObject = requestBody ? JSON.parse(requestBody) : null;
+  const { paths, post } = requestBodyObject ?? { paths: [], post: null };
   let revalidated = false;
 
   const tags = requestBodyObject?.tags ?? post ? ["wordpress"] : [];
