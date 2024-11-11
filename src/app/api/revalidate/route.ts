@@ -8,12 +8,6 @@ export async function PUT(request: NextRequest) {
     : { paths: [], tags: [] };
   let revalidated = false;
 
-  if (
-    request.headers.get("X-Headless-Secret-Key") !== process.env.HEADLESS_SECRET
-  ) {
-    return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
-  }
-
   try {
     if (paths && Array.isArray(paths) && paths.length > 0) {
       Promise.all(paths.map((path) => revalidatePath(path)));
