@@ -34,7 +34,10 @@ export async function fetchGraphQL<T = any>(
           ...headers,
         },
         body,
-        cache: "no-store",
+        cache: preview ? "no-cache" : "default",
+        next: {
+          tags: ["wordpress"],
+        },
       }
     );
 
